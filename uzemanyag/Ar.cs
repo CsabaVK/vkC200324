@@ -20,6 +20,10 @@ namespace uzemanyag
         public int Benzin { get; set; }
         public int Gazolaja { get; set; }
         public int Diferencial => Math.Abs(Benzin - Gazolaja);
+        public bool Szokonap => 
+            DateTime.IsLeapYear(Valtozas.Year) 
+            && Valtozas.Month == 2 
+            && Valtozas.Day == 24;
     }
 
 }
