@@ -11,6 +11,9 @@ namespace uzemanyag
     class Program
     {
         static List<Ar> arak;
+        static int minv;
+        const float euro = 350.23F;
+        static int ev;
         static void Main(string[] args)
         {
             Beolvas();
@@ -18,7 +21,36 @@ namespace uzemanyag
             F04();
             F05();
             F06();
+            F07();
+            F08();
             Console.ReadKey();
+        }
+
+        private static void F08()
+        {
+            do
+            {
+                Console.WriteLine("ev: ");
+                ev = int.Parse(Console.ReadLine());
+            } while (ev < 2011 || ev > 2016);
+        }
+
+        private static void F07()
+        {
+            var sw = new StreamWriter(@"eruo.txt");
+            arak.ForEach(
+                a => sw.WriteLine(
+                    " {0}; {1.0.00}; {2:0.00}; ",
+                a.Valtozas.ToString("yyyy.MM.dd"), a.Benzin / euro, a.Gazolaja / euro));
+
+            //foreach (var a in arak)
+            //{
+            //    sw.WriteLine(
+            //        " {0}; {1.0.00}; {2:0.00}; ",
+            //        a.Valtozas.ToString("yyyy.MM.dd"), a.Benzin / euro, a.Gazolaja / euro));
+            //}
+
+            sw.Close();
         }
 
         private static void F06()
